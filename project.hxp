@@ -30,13 +30,13 @@ class Project extends HXProject {
 	/**
 	 * The game's name. Used as the default window title.
 	 */
-	static final TITLE:String = "Friday Night Funkin'";
+	static final TITLE:String = "Friday Night Funkin': Phoenix Engine";
 
 	/**
 	 * The name of the generated executable file.
-	 * For example, `"Funkin"` will create a file called `Funkin.exe`.
+	 * For example, `"Phoenix"` will create a file called `Phoenix.exe`.
 	 */
-	static final EXECUTABLE_NAME:String = "Funkin";
+	static final EXECUTABLE_NAME:String = "Phoenix";
 
 	/**
 	 * The relative location of the source code.
@@ -52,7 +52,7 @@ class Project extends HXProject {
 	/**
 	 * A package name used for identifying the app on various app stores.
 	 */
-	static final PACKAGE_NAME:String = "me.funkin.fnf";
+	static final PACKAGE_NAME:String = "phoenix.funkin.fnf";
 
 	/**
 	 * The fully qualified class path for the entry point class to execute when launching the game.
@@ -291,14 +291,14 @@ class Project extends HXProject {
 
 		displayTarget();
 		configureFeatureFlags();
-    configureCompileDefines();
+    		configureCompileDefines();
 		configureIncludeMacros();
 		configureCustomMacros();
-    configureOutputDir();
-    configurePolymod();
-    configureHaxelibs();
-    configureAssets();
-    configureIcons();
+    		configureOutputDir();
+    		configurePolymod();
+    		configureHaxelibs();
+    		configureAssets();
+    		configureIcons();
 	}
 
 	/**
@@ -313,7 +313,7 @@ class Project extends HXProject {
 		info("Git Branch:     " + getGitBranch());
 		info("Git Commit:     " + getGitCommit());
 		info("Git Modified?   " + getGitModified());
-    info("Display?        " + isDisplay());
+    		info("Display?        " + isDisplay());
 	}
 
 	/**
@@ -334,9 +334,9 @@ class Project extends HXProject {
 		// If for some reason we have multiple source directories, we can add more entries here.
 		this.sources.push(SOURCE_DIR);
 
-    // Tell Lime to run some prebuild and postbuild scripts.
-    this.preBuildCallbacks.push(buildHaxeCLICommand(PREBUILD_HX));
-    this.postBuildCallbacks.push(buildHaxeCLICommand(POSTBUILD_HX));
+    		// Tell Lime to run some prebuild and postbuild scripts.
+    		this.preBuildCallbacks.push(buildHaxeCLICommand(PREBUILD_HX));
+    		this.postBuildCallbacks.push(buildHaxeCLICommand(POSTBUILD_HX));
 
 		// TODO: Should we provide this?
 		// this.meta.buildNumber = 0;
@@ -514,7 +514,7 @@ class Project extends HXProject {
 		// TODO: Look into ways to optimize logging (maybe by using a thread pool?)
 		FEATURE_LOG_TRACE.apply(this, true);
 
-		FEATURE_NEWGROUNDS.apply(this, true);
+		FEATURE_NEWGROUNDS.apply(this, false); // Disabled for now...
 		FEATURE_NEWGROUNDS_DEBUG.apply(this, false);
 		FEATURE_NEWGROUNDS_TESTING_MEDALS.apply(this, FEATURE_NEWGROUNDS.isEnabled(this) && FEATURE_DEBUG_FUNCTIONS.isEnabled(this));
 		FEATURE_NEWGROUNDS_AUTOLOGIN.apply(this, FEATURE_NEWGROUNDS.isEnabled(this) && isWeb());
@@ -549,12 +549,12 @@ class Project extends HXProject {
 		FEATURE_SCREENSHOTS.apply(this, !isWeb());
 	}
 
-  /**
-   * Set compilation flags which are not feature flags.
-   */
-  function configureCompileDefines() {
+  	/**
+  	 * Set compilation flags which are not feature flags.
+  	 */
+  	function configureCompileDefines() {
 		// Enable OpenFL's error handler. Required for the crash logger.
-    setHaxedef("openfl-enable-handle-error");
+    		setHaxedef("openfl-enable-handle-error");
 
 		// Enable stack trace tracking. Good for debugging but has a (minor) performance impact.
 		setHaxedef("HXCPP_CHECK_POINTER");
