@@ -192,8 +192,8 @@
       "name": "polymod",
       "type": "git",
       "dir": null,
-      "ref": "0fbdf27fe124549730accd540cec8a183f8652c0",
-      "url": "https://github.com/larsiusprime/polymod"
+      "ref": "phoenix-dev",
+      "url": "https://github.com/Jamextreme140/polymod-phoenix"
     },
     {
       "name": "thx.core",
